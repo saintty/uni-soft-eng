@@ -1,19 +1,27 @@
 import { isPrime } from "./../functions/isPrime/index.js";
+import { fib } from "./../functions/Fibonacci/index.js"
 
 const callFn = async (rl, idx) => {
-  if (idx < 0 || idx >= 1) return null;
+  if (idx < 0 || idx >= 2) return null;
+
+  const input = await rl.question("Number: ");
 
   switch (idx) {
     case "0":
-      const num = await rl.question("Number: ");
-      console.log(`Is ${num} prime? ${isPrime(+num)}\n\n`);
+      console.log(`Is ${input} prime? ${isPrime(+input)}\n\n`);
       break;
+
+    case "1":
+      console.log(`Это число в последовательности Фибоначчи равно: ${fib(+input)}\n\n`);
+      break;
+
     default:
       console.log("Unknown");
   }
 };
 
-const menuPoints = ["Define is input number prime"];
+const menuPoints = ["Define is input number prime",
+                            "Введите число в последовательности Фибоначчи"];
 const showMenu = async (rl) => {
   while (true) {
     const choice = await rl.question(
