@@ -1,0 +1,19 @@
+{
+  "name": "node-app",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "execa": "^8.0.1"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
