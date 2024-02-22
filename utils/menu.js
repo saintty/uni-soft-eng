@@ -3,10 +3,6 @@ import { isPrime } from "./../functions/isPrime/index.js";
 const callFn = async (rl, idx) => {
   if (idx < 0 || idx >= 1) return null;
 
-  if (idx === 0) {
-    console.log(`Is ${num} prime? ${isPrime(+num)}`);
-  }
-
   switch (idx) {
     case "0":
       const num = await rl.question("Number: ");
