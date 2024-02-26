@@ -10,5 +10,3 @@ export const fib = (n) => {
   }
   return prev;
 };
-
-console.log(fib(0));

@@ -1,24 +1,34 @@
+import { clearScreenDown, moveCursor } from "node:readline";
+
+import colors from "colors";
+
 import { isPrime } from "./../functions/isPrime/index.js";
 import { fib } from "./../functions/Fibonacci/index.js";
 import { nextPrime } from "./../functions/nextPrime/index.js";
 
-const callFn = async (rl, idx) => {
-  if (idx < 0 || idx >= 3) return null;
+import { colorize } from "./colorizeAnswer.js";
 
-  const input = await rl.question("Number: ");
+const callFn = async (rl, idx) => {
+  const input = await rl.question("Number: ".blue);
 
   switch (idx) {
     case "0":
-      console.log(`Is ${input} prime? ${isPrime(+input)}\n\n`);
+      console.log(
+        colorize({
+          str: `Is ${input} prime?`,
+          answer: isPrime(+input),
+          isBool: true,
+        })
+      );
       break;
     case "1":
-      console.log(`Nth-fib is: ${fib(+input)}\n\n`);
+      console.log(colorize({ str: `Nth-fib is:`, answer: fib(+input) }));
       break;
     case "2":
-      console.log(`Next Prime is: ${nextPrime(+input)}\n\n`);
+      console.log(
+        colorize({ str: `Next Prime is:`, answer: nextPrime(+input) })
+      );
       break;
-    default:
-      console.log("Unknown");
   }
 };
 
@@ -32,6 +42,15 @@ const showMenu = async (rl) => {
     );
 
     if (choice === "exit") break;
+    else {
+      moveCursor(process.stdout, 0, -5);
+      clearScreenDown(process.stdout);
+
+      if (!isFinite(choice) || +choice < 0 || +choice > 2) {
+        console.log(colorize({ str: "Unknown", color: "red" }));
+        continue;
+      }
+    }
 
     await callFn(rl, choice);
   }

@@ -16,11 +16,12 @@
     }
   },
   "dependencies": {
+    "colors": "^1.4.0",
     "execa": "^8.0.1"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.23.9",
-    "jest": "^29.7.0",
-    "babel-jest": "^29.7.0"
+    "babel-jest": "^29.7.0",
+    "jest": "^29.7.0"
   }
 }
