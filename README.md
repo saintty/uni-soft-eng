@@ -10,6 +10,6 @@
 - Install npm
 
 ## How to run
-
+- npm i
 - npm run start  # start application
 - npm run script # start unit-tests
